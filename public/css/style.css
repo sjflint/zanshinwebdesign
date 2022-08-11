@@ -1,0 +1,170 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding-top: 70px;
+  position: relative;
+}
+
+/* Nav */
+
+img {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+nav img {
+  width: 150px;
+  margin: 0px;
+}
+.nav-link:hover {
+  color: #6699ff !important;
+}
+
+#home-anchor {
+  margin-top: -70px;
+  padding-bottom: 70px;
+}
+
+#about-anchor {
+  margin-top: 25%;
+}
+
+/* jumbatron */
+#cover {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  background: url(/img/cover.jpg) no-repeat center center/cover;
+}
+
+.jumbatron {
+  margin-top: 1rem;
+  text-align: center;
+  width: 75%;
+}
+
+.display-3 {
+  color: #6699ff;
+}
+
+/* About */
+#about h2 {
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #6699ff;
+}
+
+#profile-pic {
+  padding: 0px;
+  border-radius: 4px;
+}
+
+#profile-info ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* Parallax */
+.fixed-bg1 {
+  background: url(/img/lady-in-garden.jpg) no-repeat center center/cover;
+  min-height: 300px;
+  background-attachment: fixed;
+}
+
+/* Parallax */
+.fixed-bg2 {
+  background: url(/img/gate.jpg) no-repeat center center/cover;
+  min-height: 300px;
+  background-attachment: fixed;
+}
+
+/* skills / Projects */
+#projects-skills h2 {
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #6699ff;
+}
+
+#project-header {
+  border-bottom: 2px solid #6699ff;
+}
+
+.project-images {
+  position: relative;
+  padding: 0;
+}
+
+.project-images img {
+  transition: opacity 0.5s;
+}
+
+.dim {
+  opacity: 0.3;
+}
+
+.website-link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+/* Contact us */
+#contact-us {
+  background-color: #000;
+}
+
+/* Form */
+#phone::-webkit-outer-spin-button,
+#phone::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+i {
+  color: #6699ff;
+}
+
+footer {
+  color: #6699ff;
+}
+
+/* media queries */
+@media (max-width: 900px) {
+  .display-3 {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 550px) {
+  .display-3 {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .m-remove {
+    display: none;
+  }
+
+  #profile-info {
+    margin-top: 1rem;
+  }
+
+  .card-header {
+    font-size: 1.5rem;
+  }
+}
+
+/* ios only */
+@supports (-webkit-touch-callout: none) {
+  /* CSS specific to iOS devices */
+  .fix-parallax {
+    background-attachment: scroll;
+  }
+}
