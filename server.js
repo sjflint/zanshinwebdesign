@@ -81,6 +81,8 @@ app.post("/contact-form", (req, res) => {
   sendMail();
 });
 
+// testing a change
+
 // set static folder
 app.use(express.static(path.join(__dirname, "public")));
 
