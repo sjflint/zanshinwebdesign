@@ -12,21 +12,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post("/contact-form", (req, res) => {
-  const sendMail = async () => {
-    let transporter = nodemailer.createTransport({
-      host: "smtp.hostinger.co.uk",
-      port: 587,
-      secure: false, // true for 465, false for other ports
-      auth: {
-        user: process.env.EmailUser,
-        pass: process.env.EmailPass,
-      },
-      tls: {
-        rejectUnauthorized: false,
-      },
-    });
+  if (req.body.captcha === "10") {
+    const sendMail = async () => {
+      let transporter = nodemailer.createTransport({
+        host: "smtp.hostinger.co.uk",
+        port: 587,
+        secure: false, // true for 465, false for other ports
+        auth: {
+          user: process.env.EmailUser,
+          pass: process.env.EmailPass,
+        },
+        tls: {
+          rejectUnauthorized: false,
+        },
+      });
 
-    const output = `
+      const output = `
     <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -60,25 +61,26 @@ app.post("/contact-form", (req, res) => {
 </html>  
     `;
 
-    let mailOptions = {
-      from: '"Zanshin Web Design" <info@zanshinwebdesign.com>', // sender address
-      to: `${req.body.email}; info@zanshinwebdesign.com`,
-      subject: "Enquiry",
-      text: "Zanshin web design enquiry",
-      html: output,
-    };
+      let mailOptions = {
+        from: '"Zanshin Web Design" <info@zanshinwebdesign.com>', // sender address
+        to: `${req.body.email}; info@zanshinwebdesign.com`,
+        subject: "Enquiry",
+        text: "Zanshin web design enquiry",
+        html: output,
+      };
 
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        return console.log(error);
-      }
-      console.log("Message sent: %s", info.messageId);
-      console.log("form submitted");
-      res.redirect("/success.html");
-    });
-  };
-  sendMail();
+      // send mail with defined transport object
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          return console.log(error);
+        }
+        console.log("Message sent: %s", info.messageId);
+        console.log("form submitted");
+        res.redirect("/success.html");
+      });
+    };
+    sendMail();
+  }
 });
 
 // testing a change
